@@ -1,1 +1,38 @@
-<p>login works!</p>
+<section>
+  <form
+    (ngSubmit)="onSubmit()"
+    [formGroup]="loginForm"
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    fxLayoutGap="10px">
+    <mat-form-field>
+      <mat-label>Your Email</mat-label>
+      <input
+        formControlName="email"
+        matInput
+        placeholder="Your email"
+        type="email">
+      <mat-hint>Please enter a valid email.</mat-hint>
+      <mat-error>Invalid or missing email.</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Your Password</mat-label>
+      <input
+        formControlName="password"
+        matInput
+        placeholder="Your password"
+        type="password">
+      <mat-hint>Please enter your password.</mat-hint>
+      <mat-error>Missing password.</mat-error>
+    </mat-form-field>
+    <button [disabled]="loginForm.invalid" color="primary" mat-raised-button type="submit">Submit</button>
+  </form>
+</section>
+
+<!-- <ol>
+  <li>Add an email and password field (with Material Components of course)</li>
+  <li>Add validation (email => required and email, password => required)</li>
+  <li>Show errors and hints</li>
+  <li>Make form submittable and disable button if invalid</li>
+  <li>BONUS: Do all of that by using the reactive approach!</li>
+</ol> -->

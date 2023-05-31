@@ -1,1 +1,44 @@
-<p>past-trainings works!</p>
+<div fxLayoutAlign="center center">
+  <mat-form-field fxFlex="40%">
+    <input (keyup)="doFilter($event.key)" matInput placeholder="Filter" type="text">
+  </mat-form-field>
+</div>
+<table [dataSource]="dataSource" class="mat-elevation-z8" mat-table matSort>
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="date">
+    <th *matHeaderCellDef mat-header-cell mat-sort-header> Date</th>
+    <td *matCellDef="let element" mat-cell> {{element.date |date}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th *matHeaderCellDef mat-header-cell mat-sort-header> Name</th>
+    <td *matCellDef="let element" mat-cell> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="calories">
+    <th *matHeaderCellDef mat-header-cell mat-sort-header> Calories</th>
+    <td *matCellDef="let element" mat-cell> {{element.calories | number}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="duration">
+    <th *matHeaderCellDef mat-header-cell mat-sort-header> Duration</th>
+    <td *matCellDef="let element" mat-cell> {{element.duration|number}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="state">
+    <th *matHeaderCellDef mat-header-cell mat-sort-header> State</th>
+    <td *matCellDef="let element" mat-cell> {{element.state}} </td>
+  </ng-container>
+
+  <tr *matHeaderRowDef="displayedColumns" mat-header-row></tr>
+  <tr *matRowDef="let row; columns: displayedColumns;" mat-row></tr>
+</table>
+<mat-paginator [pageSizeOptions]="[5,10,20]" [pageSize]="1"></mat-paginator>
+

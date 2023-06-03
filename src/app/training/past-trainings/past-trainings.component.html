@@ -11,7 +11,7 @@
   <!-- Position Column -->
   <ng-container matColumnDef="date">
     <th *matHeaderCellDef mat-header-cell mat-sort-header> Date</th>
-    <td *matCellDef="let element" mat-cell> {{element.date |date}} </td>
+    <td *matCellDef="let element" mat-cell> {{element.date.toDate() |date}} </td>
   </ng-container>
 
   <!-- Name Column -->
